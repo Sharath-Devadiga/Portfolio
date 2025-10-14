@@ -1,0 +1,91 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 25 25% 12%;
+    --foreground: 35 20% 92%;
+
+    --card: 30 18% 18%;
+    --card-foreground: 35 20% 92%;
+
+    --popover: 30 20% 15%;
+    --popover-foreground: 35 20% 92%;
+
+    --primary: 35 55% 55%;
+    --primary-foreground: 25 25% 12%;
+
+    --secondary: 35 45% 68%;
+    --secondary-foreground: 25 25% 12%;
+
+    --muted: 25 15% 25%;
+    --muted-foreground: 35 15% 65%;
+
+    --accent: 40 65% 60%;
+    --accent-foreground: 25 25% 12%;
+
+    --destructive: 0 70% 50%;
+    --destructive-foreground: 35 20% 92%;
+
+    --border: 30 20% 25%;
+    --input: 30 18% 20%;
+    --ring: 35 55% 55%;
+
+    --radius: 0.25rem;
+
+    --wood-dark: 25 35% 15%;
+    --paper-cream: 40 35% 90%;
+    --sepia-tone: 35 55% 55%;
+    --lamp-glow: 45 90% 65%;
+    --ink-black: 25 20% 18%;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-typewriter;
+  }
+}
+
+@layer utilities {
+  .font-typewriter {
+    font-family: 'Special Elite', 'Courier New', monospace;
+  }
+
+  .font-handwriting {
+    font-family: 'Kalam', cursive;
+  }
+
+  .font-serif {
+    font-family: 'Crimson Text', serif;
+  }
+
+  .text-shadow-glow {
+    text-shadow: 0 0 20px hsl(var(--lamp-glow) / 0.5);
+  }
+
+  .desk-texture {
+    background-image:
+      linear-gradient(rgba(0, 0, 0, 0.1) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 0, 0, 0.1) 1px, transparent 1px);
+    background-size: 100px 100px;
+  }
+}
