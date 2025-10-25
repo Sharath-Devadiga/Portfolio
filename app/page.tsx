@@ -23,7 +23,18 @@ export default function Home() {
 
   const handleNavigate = (section: string) => {
     setActiveSection(section);
-    document.getElementById(section)?.scrollIntoView({ behavior: 'smooth' });
+    
+    const element = document.getElementById(section);
+    if (element) {
+      const navHeight = window.innerWidth < 768 ? 70 : 80; // Smaller offset for mobile
+      const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+      const offsetPosition = elementPosition - navHeight;
+      
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
   };
 
   useEffect(() => {

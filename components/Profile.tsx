@@ -13,7 +13,7 @@ const Profile = () => {
   ];
 
   return (
-    <section id="profile" className="relative py-12 md:py-20 px-4 bg-gradient-to-b from-background to-muted/30 overflow-hidden">
+    <section id="profile" className="scroll-mt-[70px] md:scroll-mt-20 relative py-12 md:py-20 px-4 bg-gradient-to-b from-background to-muted/30 overflow-hidden">
       {/* Floating background elements */}
       <motion.div
         className="absolute top-10 right-10 w-64 h-64 bg-primary/5 rounded-full blur-3xl"

@@ -49,10 +49,9 @@ const Contact = () => {
       );
   };
 
-  // Function to trigger resume download
   const downloadResume = () => {
     const link = document.createElement("a");
-    link.href = "/assets/newResume.pdf"; // replace with actual resume path
+    link.href = "/assets/newResume.pdf"; 
     link.download = "Sharath_Devadiga_Resume.pdf";
     document.body.appendChild(link);
     link.click();
@@ -60,7 +59,7 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-12 md:py-20 px-4 bg-muted/30">
+    <section id="contact" className="scroll-mt-[70px] md:scroll-mt-20 py-12 md:py-20 px-4 bg-muted/30">
       <div className="container mx-auto max-w-6xl">
         <motion.h2
           className="font-typewriter text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-center mb-3 md:mb-4 text-primary tracking-wider"

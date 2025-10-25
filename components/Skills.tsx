@@ -49,7 +49,7 @@ const skills: Skill[] = [
 
 const Skills = () => {
   return (
-    <section id="tools" className="py-12 md:py-20 px-4">
+    <section id="tools" className="scroll-mt-[70px] md:scroll-mt-20 py-12 md:py-20 px-4">
       <div className="container mx-auto max-w-6xl">
         <motion.h2
           className="font-typewriter text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-center mb-3 md:mb-4 text-primary tracking-wider"
@@ -91,31 +91,26 @@ const Skills = () => {
                 const Icon = skill.icon;
                 return (
                   <motion.div
-                    key={idx}
-                    className="group flex flex-col items-center"
+                    key={`${skill.name}-${skill.category}`}
+                    className="flex flex-col items-center touch-none"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.4, delay: idx * 0.05 }}
-                    whileHover={{ y: -8 }}
                   >
                     <div className="relative mb-2 sm:mb-3">
                       <motion.div
-                        className="absolute inset-0 bg-muted rounded-full blur-sm opacity-50"
-                        whileHover={{ opacity: 1, scale: 1.2 }}
-                      />
-                      <motion.div
-                        className="relative w-12 h-12 sm:w-16 sm:h-16 bg-card border-2 border-border rounded-full flex items-center justify-center group-hover:bg-primary group-hover:border-primary transition-all duration-300 shadow-lg"
-                        whileHover={{ scale: 1.1 }}
-                        whileTap={{ scale: 0.95 }}
+                        className="relative w-12 h-12 sm:w-16 sm:h-16 bg-card border-2 border-border rounded-full flex items-center justify-center md:hover:bg-primary md:hover:border-primary transition-all duration-300 shadow-lg overflow-hidden"
+                        whileTap={{ scale: 0.9 }}
+                        transition={{ type: "spring", stiffness: 400, damping: 25 }}
                       >
-                        <Icon className="w-6 h-6 sm:w-8 sm:h-8 text-primary group-hover:text-primary-foreground transition-colors" />
+                        <Icon className="w-6 h-6 sm:w-8 sm:h-8 text-primary md:group-hover:text-primary-foreground transition-colors relative z-10" />
                       </motion.div>
                       <div className="absolute -top-2 sm:-top-3 left-1/2 -translate-x-1/2 w-1 h-2 sm:h-3 bg-border rounded-full" />
                     </div>
 
                     <div className="text-center">
-                      <p className="font-typewriter text-[10px] sm:text-xs text-foreground group-hover:text-primary transition-colors leading-tight">
+                      <p className="font-typewriter text-[10px] sm:text-xs text-foreground transition-colors leading-tight">
                         {skill.name}
                       </p>
                       <p className="font-serif text-[9px] sm:text-[10px] text-muted-foreground mt-0.5 sm:mt-1">

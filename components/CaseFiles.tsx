@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { motion } from "framer-motion";
 import { Card } from "@/components/ui/card";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
@@ -53,6 +53,24 @@ const caseFiles: CaseFile[] = [
   {
     id: '3',
     number: '003',
+    title: 'MoodBlog - A Mood-Based Blogging Platform',
+    brief: 'MoodBlog is a modern full-stack social platform that allows users to express and share thoughts through mood-based posts. Each post is tagged with an emotion, letting users explore content that matches their current mood. The application features a polished dark UI, real-time updates, secure authentication, and a smooth, mobile-responsive design — delivering an engaging and personalized blogging experience.”',
+    contribution: [
+      'Mood-Based Posts: Share and explore posts tagged with 8 unique emotions.',
+       'Social Interactions: Like, comment, and reply with nested comment threads.',
+        'User Profiles: View mood analytics, post history, and profile customization.',
+       ' Secure Auth: Email/password login with OTP-based password reset.',
+        'Mood Dashboard: Filter and track posts by specific moods.',
+        'Optimized UX: Real-time updates, smooth animations, and mobile-first design.'
+    ],
+    tools: ['Next.js', 'TypeScript', 'Prisma', 'PostgreSQL', 'Tailwind CSS', 'Zustand', 'Cloudinary', 'NextAuth'],
+    repo: 'https://github.com/Sharath-Devadiga/MoodBlog',
+    link: 'https://mood-blog.devadigascode.site/',
+    image: ['assets/blog2.png','assets/blog1.png','assets/blog4.png','assets/blog5.png']
+  },
+  {
+    id: '4',
+    number: '004',
     title: 'Brain App - Save, Organize, and Share Knowledge',
     brief: 'Brain App is a secure web application that lets users save, organize, and share valuable content from YouTube, Twitter, and personal notes. Users can bookmark important information for future reference and share their curated collections, referred to as their “Brain.”', 
     contribution: [
@@ -60,16 +78,17 @@ const caseFiles: CaseFile[] = [
     ],
     tools: ['Reactjs', 'Expressjs', 'MongoDb', 'Nodejs'],
     repo: 'https://github.com/Sharath-Devadiga/BrainApp',
-    link: '#',
-    image: ['assets/brain.png']
-  }
+    link: 'https://brainers.devadigascode.site/',
+    image: ['assets/brain2.png','assets/brain1.png']
+  },
 ];
 
 const CaseFiles = () => {
   const [selectedCase, setSelectedCase] = useState<CaseFile | null>(null);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
 
   return (
-    <section id="cases" className="py-12 md:py-20 px-4 bg-muted/30">
+    <section id="cases" className="scroll-mt-[70px] md:scroll-mt-20 py-12 md:py-20 px-4 bg-muted/30">
       <div className="container mx-auto max-w-6xl">
         <motion.h2
           className="font-typewriter text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-center mb-3 md:mb-4 text-primary tracking-wider"
@@ -90,7 +109,106 @@ const CaseFiles = () => {
           Click on any project to view the details
         </motion.p>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+        {/* Mobile: Stacked Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 md:hidden">
+          {caseFiles.map((caseFile, idx) => (
+            <motion.div
+              key={caseFile.id}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: idx * 0.1 }}
+              whileHover={{ y: -8 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              <Card
+                onClick={() => setSelectedCase(caseFile)}
+                className="group relative cursor-pointer bg-card hover:bg-card/80 transition-all duration-300 hover:shadow-2xl border-2 border-border overflow-hidden h-full"
+              >
+                <div className="p-6 flex flex-col items-center text-center">
+                  <motion.div
+                    className="mb-4 relative"
+                    whileHover={{ scale: 1.1, rotate: 5 }}
+                    whileTap={{ rotate: 5 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <Folder className="w-24 h-24 text-primary/60 group-hover:text-primary transition-colors" />
+                    <Badge className="absolute top-0 right-0 bg-primary text-primary-foreground font-typewriter text-xs">
+                      #{caseFile.number}
+                    </Badge>
+                  </motion.div>
+
+                  <h3 className="font-typewriter text-lg mb-2 text-foreground group-hover:text-primary transition-colors">
+                    {caseFile.title}
+                  </h3>
+
+                  <p className="font-serif text-xs text-muted-foreground line-clamp-3 flex-grow">
+                    {caseFile.brief}
+                  </p>
+
+                  <div className="mt-4 text-xs font-typewriter text-primary">
+                    CLICK TO VIEW →
+                  </div>
+                </div>
+              </Card>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Tablet: Horizontal Scroll */}
+        <div className="relative hidden md:block lg:hidden">
+          <div 
+            ref={scrollContainerRef}
+            className="overflow-x-auto overflow-y-hidden pb-6"
+          >
+            <div className="flex items-stretch gap-6 min-w-min">
+              {caseFiles.map((caseFile, idx) => (
+                <motion.div
+                  key={caseFile.id}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: idx * 0.1 }}
+                  whileHover={{ y: -8 }}
+                  className="flex-shrink-0 w-[300px]"
+                >
+                  <Card
+                    onClick={() => setSelectedCase(caseFile)}
+                    className="group relative cursor-pointer bg-card hover:bg-card/80 transition-all duration-300 hover:shadow-2xl border-2 border-border overflow-hidden h-full"
+                  >
+                    <div className="p-5 flex flex-col items-center text-center h-full">
+                      <motion.div
+                        className="mb-3 relative"
+                        whileHover={{ scale: 1.1, rotate: 5 }}
+                        transition={{ duration: 0.3 }}
+                      >
+                        <Folder className="w-24 h-24 text-primary/60 group-hover:text-primary transition-colors" />
+                        <Badge className="absolute top-0 right-0 bg-primary text-primary-foreground font-typewriter text-xs">
+                          #{caseFile.number}
+                        </Badge>
+                      </motion.div>
+
+                      <h3 className="font-typewriter text-lg mb-2 text-foreground group-hover:text-primary transition-colors">
+                        {caseFile.title}
+                      </h3>
+
+                      <p className="font-serif text-xs text-muted-foreground line-clamp-3 flex-grow">
+                        {caseFile.brief}
+                      </p>
+
+                      <div className="mt-3 text-xs font-typewriter text-primary">
+                        CLICK TO VIEW →
+                      </div>
+                    </div>
+                  </Card>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Desktop: All 4 in one row */}
+        <div className="hidden lg:grid lg:grid-cols-4 gap-4 xl:gap-6">
           {caseFiles.map((caseFile, idx) => (
             <motion.div
               key={caseFile.id}
@@ -104,27 +222,27 @@ const CaseFiles = () => {
                 onClick={() => setSelectedCase(caseFile)}
                 className="group relative cursor-pointer bg-card hover:bg-card/80 transition-all duration-300 hover:shadow-2xl border-2 border-border overflow-hidden h-full"
               >
-                <div className="p-6 flex flex-col items-center text-center">
+                <div className="p-4 xl:p-5 flex flex-col items-center text-center h-full">
                   <motion.div
-                    className="mb-4 relative"
+                    className="mb-3 relative"
                     whileHover={{ scale: 1.1, rotate: 5 }}
                     transition={{ duration: 0.3 }}
                   >
-                    <Folder className="w-32 h-32 text-primary/60 group-hover:text-primary transition-colors" />
-                    <Badge className="absolute top-0 right-0 bg-primary text-primary-foreground font-typewriter">
+                    <Folder className="w-20 h-20 xl:w-24 xl:h-24 text-primary/60 group-hover:text-primary transition-colors" />
+                    <Badge className="absolute top-0 right-0 bg-primary text-primary-foreground font-typewriter text-[10px]">
                       #{caseFile.number}
                     </Badge>
                   </motion.div>
 
-                  <h3 className="font-typewriter text-xl mb-2 text-foreground group-hover:text-primary transition-colors">
+                  <h3 className="font-typewriter text-sm xl:text-base mb-2 text-foreground group-hover:text-primary transition-colors line-clamp-2">
                     {caseFile.title}
                   </h3>
 
-                  <p className="font-serif text-sm text-muted-foreground line-clamp-2">
+                  <p className="font-serif text-xs text-muted-foreground line-clamp-3 flex-grow">
                     {caseFile.brief}
                   </p>
 
-                  <div className="mt-4 text-xs font-typewriter text-primary">
+                  <div className="mt-3 text-[10px] xl:text-xs font-typewriter text-primary">
                     CLICK TO VIEW →
                   </div>
                 </div>
