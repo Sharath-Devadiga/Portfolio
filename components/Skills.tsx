@@ -92,7 +92,7 @@ const Skills = () => {
                 return (
                   <motion.div
                     key={`${skill.name}-${skill.category}`}
-                    className="flex flex-col items-center touch-none"
+                    className="flex flex-col items-center"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
