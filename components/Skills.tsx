@@ -76,7 +76,7 @@ const Skills = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          <Card className="bg-card/50 p-8 border-2 border-border relative overflow-hidden">
+          <Card className="bg-card/50 p-8 border-2 border-border relative">
             {/* Circuit pattern */}
             <div className="absolute inset-0 opacity-5 pointer-events-none">
               <div className="grid grid-cols-12 gap-4 w-full h-full p-4">

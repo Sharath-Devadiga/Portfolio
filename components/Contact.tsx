@@ -51,7 +51,7 @@ const Contact = () => {
 
   const downloadResume = () => {
     const link = document.createElement("a");
-    link.href = "/assets/newResume.pdf"; 
+    link.href = "/assets/sharath_resume.pdf"; 
     link.download = "Sharath_Devadiga_Resume.pdf";
     document.body.appendChild(link);
     link.click();
