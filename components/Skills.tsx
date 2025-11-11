@@ -78,7 +78,7 @@ const Skills = () => {
         >
           <Card className="bg-card/50 p-8 border-2 border-border relative overflow-hidden">
             {/* Circuit pattern */}
-            <div className="absolute inset-0 opacity-5">
+            <div className="absolute inset-0 opacity-5 pointer-events-none">
               <div className="grid grid-cols-12 gap-4 w-full h-full p-4">
                 {Array.from({ length: 144 }).map((_, i) => (
                   <div key={i} className="w-2 h-2 rounded-full bg-foreground/20" />
