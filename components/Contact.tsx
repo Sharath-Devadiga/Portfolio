@@ -266,7 +266,7 @@ const Contact = () => {
 
             {/* PDF iframe */}
             <iframe
-              src="assets/newResume.pdf" // replace with your resume path
+              src="assets/sharath_resume.pdf" // replace with your resume path
               className="w-full h-[80vh] border-0"
             />
           </div>
