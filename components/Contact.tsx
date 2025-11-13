@@ -51,7 +51,7 @@ const Contact = () => {
 
   const downloadResume = () => {
     const link = document.createElement("a");
-    link.href = "/assets/sharath_resume.pdf"; 
+    link.href = "/assets/sharath_final_resume.pdf"; 
     link.download = "Sharath_Devadiga_Resume.pdf";
     document.body.appendChild(link);
     link.click();
@@ -266,7 +266,7 @@ const Contact = () => {
 
             {/* PDF iframe */}
             <iframe
-              src="assets/sharath_resume.pdf" // replace with your resume path
+              src="assets/sharath_final_resume.pdf" // replace with your resume path
               className="w-full h-[80vh] border-0"
             />
           </div>
